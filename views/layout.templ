@@ -1,0 +1,24 @@
+package views
+
+import "github.com/invopop/ctxi18n/i18n"
+
+templ Layout(title string, lang string) {
+	<!DOCTYPE html>
+	<html lang={ lang }>
+		<head>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<link rel="stylesheet" href="/static/css/app.css"/>
+			<title>{ title }</title>
+			<script type="text/javascript" src="/static/js/htmx.min.js"></script>
+			<script type="text/javascript" src="/static/js/extensions/class-tools.js"></script>
+		</head>
+		<body>
+			<div class="flex items-center justify-end px-4 py-2">
+				<a class="underline mr-2" href="/es">{ i18n.T(ctx, "layout.spanish") }</a>
+				<a class="underline" href="/en">{ i18n.T(ctx, "layout.english") }</a>
+			</div>
+			{ children... }
+		</body>
+	</html>
+}

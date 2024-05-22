@@ -1,0 +1,10 @@
+es:
+  home:
+    title: "¡Hola!"
+    hey_title: "Hola!"
+    touch_btn: "Tócame!"
+en:
+  home:
+    title: "Hello!"
+    hey_title: "Hi there!"
+    touch_btn: "Touch me!"

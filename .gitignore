@@ -1,0 +1,4 @@
+tmp/
+views/**/*_templ.go
+views/**/*_templ.txt
+node_modules/

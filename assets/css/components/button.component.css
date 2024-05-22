@@ -1,0 +1,7 @@
+.button {
+  @apply bg-teal-500 text-white p-2 rounded-lg font-medium outline-none;
+  transition: background-color 0.25s ease;
+}
+.button:focus {
+  @apply bg-teal-400;
+}

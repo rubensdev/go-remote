@@ -1,0 +1,16 @@
+/* .textfield {
+} */
+
+.textfield__label {
+  @apply block text-sm font-medium text-gray-700 mb-1;
+}
+
+.textfield__input {
+  @apply border border-gray-600 rounded-md p-2 outline-none;
+}
+.textfield__input.textfield__input:focus {
+  @apply border-teal-500;
+}
+.textfield__errors {
+  @apply mt-1;
+}

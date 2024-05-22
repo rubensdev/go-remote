@@ -1,0 +1,16 @@
+package views
+
+import "github.com/invopop/ctxi18n/i18n"
+
+templ Home() {
+	@Layout(i18n.T(ctx, "home.title"), i18n.GetLocale(ctx).Code().String()) {
+		<div class="flex flex-col items-center justify-center">
+			<h1 class="text-2xl">{ i18n.T(ctx, "home.hey_title") }</h1>
+			<button
+				class="px-2 py-4 rounded-lg bg-gray-200 border-b border-gray-400"
+				hx-get="/test"
+				hx-swap="outerHTML"
+			>{ i18n.T(ctx, "home.touch_btn") }</button>
+		</div>
+	}
+}

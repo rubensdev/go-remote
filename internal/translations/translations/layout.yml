@@ -1,0 +1,10 @@
+es:
+  layout:
+    header: "Bienvenido!"
+    spanish: "Español"
+    english: "Inglés"
+en:
+  layout:
+    header: "Welcome!"
+    spanish: "Spanish"
+    english: "English"
