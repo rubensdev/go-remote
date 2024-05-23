@@ -1,0 +1,11 @@
+.keyboard__row {
+  @apply flex items-center justify-between mb-1;
+}
+.keyboard__row:last-child {
+  @apply mb-0;
+}
+
+.keyboard__key {
+  @apply py-2 px-3 rounded-full bg-gray-200 flex-none;
+  transition: background-color 0.25s ease;
+}

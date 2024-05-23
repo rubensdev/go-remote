@@ -1,2 +1,4 @@
-@import "./components/textfield.component.css";
-@import "./components/button.component.css";
+@import "./components/mode_buttons.component.css";
+@import "./components/touchpad.component.css";
+@import "./components/media_buttons.component.css";
+@import "./components/keyboard.component.css";

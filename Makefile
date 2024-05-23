@@ -6,16 +6,25 @@ help: # Show this help.
 
 .PHONY: build
 build: # Minify the final CSS and build the app executable.
+	@make js-build
 	@make css-build
 	@go build -tags prod -o bin/app .
 
 .PHONY: dev
-dev: # runs tailwindcss in watch mode and air for live-reloading
-	@make -j 2 css-watch air
+dev:
+	make -j 3 css-watch js-watch air
 	
 .PHONY: air
 air: # Live reloading (listenAddr=8000 by default)
 	@LISTEN_ADDR=${listenAddr} air
+
+.PHONY: js-build
+js-build: # Build the final app.js minified
+	@npx esbuild assets/js/app.js --bundle --outdir=static/js
+
+.PHONY: js-watch
+js-watch: # Watch app.js for changes
+	@npx esbuild assets/js/app.js --bundle --outdir=static/js --watch=forever
 
 .PHONY: css-build
 css-build: # Minify the final CSS

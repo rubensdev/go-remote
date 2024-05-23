@@ -1,0 +1,15 @@
+.touchpad {
+  @apply rounded-lg bg-sky-300 w-full;
+  height: 320px;
+}
+
+.touchpad_buttons {
+  @apply flex items-center justify-between;
+}
+
+.touchpad_buttons__btn {
+  @apply bg-sky-300 rounded-lg h-14 w-full;
+}
+.touchpad_buttons__btn:first-child {
+  @apply mr-2;
+}

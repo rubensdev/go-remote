@@ -1,0 +1,16 @@
+.media_buttons {
+  @apply flex items-center justify-between mb-4;
+}
+.media_btn {
+  @apply w-10 h-10 flex items-center justify-center rounded-lg bg-sky-300 select-none;
+  transition: color 0.25s ease;
+}
+.media_btn:focus {
+  @apply text-white;
+}
+.media_btn > img {
+  @apply w-8 h-8 pointer-events-none;
+}
+.media_btn > span {
+  @apply pointer-events-none;
+}

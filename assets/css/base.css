@@ -1,0 +1,15 @@
+html {
+  overflow: hidden;
+  overscroll-behavior: none;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+.remote_container {
+  @apply p-2 mx-auto flex flex-col justify-between;
+  max-width: 475px;
+  height: calc(100% - 40px);
+}

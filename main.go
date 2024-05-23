@@ -3,12 +3,14 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
 	"log/slog"
 	"net/http"
 	"os"
 
 	"github.com/go-chi/chi/v5"
 	chiMiddleware "github.com/go-chi/chi/v5/middleware"
+	"github.com/gorilla/websocket"
 	"github.com/invopop/ctxi18n"
 	"rubensdev.com/gotth-starter/internal/translations"
 	"rubensdev.com/gotth-starter/views"
@@ -35,8 +37,30 @@ func main() {
 	r.Use(chiMiddleware.Logger)
 	r.Handle("/*", GetStaticHandler())
 
-	r.Get("/test", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("<div class=\"bg-sky-500 text-center py-2 text-white text-shadow-lg\">My spoon is to big!</div>"))
+	wsUpgrader := websocket.Upgrader{
+		ReadBufferSize:  1024,
+		WriteBufferSize: 1024,
+	}
+
+	r.Get("/ws", func(w http.ResponseWriter, r *http.Request) {
+		// Upgrade the HTTP connection to a Websocket connection.
+		conn, err := wsUpgrader.Upgrade(w, r, nil)
+		if err != nil {
+			log.Printf("error: %v", err)
+			return
+		}
+		// Read messages from the client.
+		for {
+			// Read a message from the client
+			_, message, err := conn.ReadMessage()
+			if err != nil {
+				if websocket.IsUnexpectedCloseError(err, websocket.CloseGoingAway, websocket.CloseAbnormalClosure) {
+					log.Printf("error reading message from client: %v\n", err)
+				}
+				return
+			}
+			handleAction(string(message))
+		}
 	})
 
 	// Go to Spanish by default

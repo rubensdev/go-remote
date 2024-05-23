@@ -1,0 +1,35 @@
+package components
+
+import "github.com/invopop/ctxi18n/i18n"
+
+templ Keyboard() {
+	<div id="keyboard-mode">
+		<div class="keyboard__row" role="button">
+			for _, k := range []string{"q", "w", "e", "r", "t", "u", "i", "o", "p", ""} {
+				<div class="keyboard__key" data-action={ "key " + k }>{ k }</div>
+			}
+		</div>
+		<div class="keyboard__row" role="button">
+			for _, k := range []string{"a", "s", "d", "f", "g", "h", "j", "k", "l", "ñ"} {
+				<div class="keyboard__key" data-action={ "key " + k }>{ k }</div>
+			}
+		</div>
+		<div class="keyboard__row" role="button">
+			for _, k := range []string{"z", "x", "c", "v", "b", "n", "m", ",", ".", "-"} {
+				<div class="keyboard__key" data-action={ "key " + k }>{ k }</div>
+			}
+		</div>
+		<div class="keyboard__row">
+			<div class="keyboard__key" data-action="key capslock" role="button">{ i18n.T(ctx, "layout.capslock") }</div>
+			<div class="keyboard__key" data-action="key space" role="button">{ i18n.T(ctx, "layout.space") }</div>
+			<div class="keyboard__key" data-action="key backspace" role="button">{ i18n.T(ctx, "layout.backspace") }</div>
+			<div class="keyboard__key" data-action="key enter" role="button">Enter</div>
+		</div>
+		<div class="keyboard__row">
+			<div class="keyboard__key" data-action="key home" role="button">{ i18n.T(ctx, "layout.home") }</div>
+			<div class="keyboard__key" data-action="key pageup" role="button">{ i18n.T(ctx, "layout.page_up") }</div>
+			<div class="keyboard__key" data-action="key pagedown" role="button">{ i18n.T(ctx, "layout.page_down") }</div>
+			<div class="keyboard__key" data-action="key end" role="button">{ i18n.T(ctx, "layout.end") }</div>
+		</div>
+	</div>
+}

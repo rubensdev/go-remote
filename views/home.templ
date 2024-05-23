@@ -1,16 +1,32 @@
 package views
 
+import "fmt"
 import "github.com/invopop/ctxi18n/i18n"
+import "rubensdev.com/gotth-starter/views/components"
+
+type transFn func(ctx context.Context, key string, args ...any) string
 
 templ Home() {
 	@Layout(i18n.T(ctx, "home.title"), i18n.GetLocale(ctx).Code().String()) {
-		<div class="flex flex-col items-center justify-center">
-			<h1 class="text-2xl">{ i18n.T(ctx, "home.hey_title") }</h1>
-			<button
-				class="px-2 py-4 rounded-lg bg-gray-200 border-b border-gray-400"
-				hx-get="/test"
-				hx-swap="outerHTML"
-			>{ i18n.T(ctx, "home.touch_btn") }</button>
+		<div class="remote_container" hx-ext="ws" ws-connect="/ws">
+			<div>
+				@components.ConnectionStatus()
+				@components.TouchContainer()
+				@components.Keyboard()
+			</div>
+			@components.ModeButtons()
 		</div>
+		@templ.Raw(fmt.Sprintf(`
+				<script type="text/javascript">
+					window.LANG = {
+						connected: '%s',
+						disconnected: '%s',
+					}
+				</script>
+				`,
+			i18n.T(ctx, "layout.connected"),
+			i18n.T(ctx, "layout.disconnected"),
+		))
+		<script type="text/javascript" src="/static/js/app.js" defer></script>
 	}
 }
