@@ -1,6 +1,6 @@
 .touchpad {
   @apply rounded-lg bg-sky-300 w-full;
-  height: 320px;
+  height: 300px;
 }
 
 .touchpad_buttons {
